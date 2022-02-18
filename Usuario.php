@@ -3,8 +3,8 @@
 class Usuario
 {
     public $usuarios = [
-        ['id' => 1, 'login' => 'tadeu', 'senha' => 'minhasenhasupersecreta'],
-        ['id' => 2, 'login' => 'teed', 'senha' => 'lembrardaminhasenha123']
+        ['id' => 1, 'tipo' => 'admin', 'login' => 'tadeu', 'senha' => 'minhasenhasupersecreta'],
+        ['id' => 2, 'tipo' => 'moderador', 'login' => 'teed', 'senha' => 'lembrardaminhasenha123']
     ];
     public $usuariosLogados = [1];
     public $notas = [
