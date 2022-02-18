@@ -24,56 +24,56 @@ class Usuario
 
     public function logar($login, $senha)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de logar
     }
 
     public function cadastrar($login, $senha)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de cadastrar
     }
 
     public function logout($usuarioId)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de logout
     }
 
     public function alterarDados($usuarioId, $login = null, $senha = null)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de alterar dados
     }
 
     public function ehAdministrador($usuarioId)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de verificar se é administrador
     }
 
     public function ehModerador($usuarioId)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de verificar se é moderador
     }
 
     public function adicionarALista($usuarioId, $listaId)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de adicionar a lista
     }
 
     public function removerDaLista($usuarioId, $listaId)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de remover da lista
     }
 
     public function adicionarNota($usuarioId, $conteudo)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de adicionar nota
     }
 
     public function editarNota($notaId, $usuarioId, $conteudo)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de editar nota
     }
 
     public function removerNota($notaId)
     {
-        throw new \Exception('Não implementado ainda!');
+        // TODO: implementar função de remover nota
     }
 }
