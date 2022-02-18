@@ -22,25 +22,24 @@ class ApiController
 
             if (in_array($dados['id'], $this->usuario->usuariosLogados)) {
                 return ['mensagem' => 'Usuário está logado'];
-            } else {
-                return ['mensagem' => 'Usuário não está logado'];
             }
-        } else if ($this->rota === '/cadastrar') {
+            return ['mensagem' => 'Usuário não está logado'];
+        }
+        if ($this->rota === '/cadastrar') {
             $dados = $this->usuario->cadastrar($this->dados['login'], $this->dados['senha']);
 
             if (in_array($dados['id'], $this->usuario->usuariosLogados)) {
                 return ['mensagem' => 'Usuário cadastrado e logado'];
-            } else {
-                return ['mensagem' => 'Usuário não cadastrado'];
             }
-        } else if ($this->rota === '/logout') {
+            return ['mensagem' => 'Usuário não cadastrado'];
+        }
+        if ($this->rota === '/logout') {
             $this->usuario->logout($this->dados['usuarioId']);
 
             if (in_array($this->dados['usuarioId'], $this->usuario->usuariosLogados) === false) {
                 return ['mensagem' => 'Usuário deslogado'];
-            } else {
-                return ['mensagem' => 'Usuário não deslogado'];
             }
+            return ['mensagem' => 'Usuário não deslogado'];
         }
     }
 }
