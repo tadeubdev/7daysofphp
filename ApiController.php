@@ -15,7 +15,8 @@ class ApiController
         $this->usuario = $usuario;
     }
 
-    public function executa() {
+    public function executa() 
+    {
         if ($this->rota === '/login') {
             $dados = $this->usuario->logar($this->dados['login'], $this->dados['senha']);
 
