@@ -49,3 +49,6 @@ $rota = $_SERVER['REQUEST_URI'];
 $usuario = new Usuario();
 $dados = $_GET;
 $api = new ApiController($rota, $dados, $usuario);
+
+$response = $api->executa();
+echo json_encode($response);
