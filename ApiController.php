@@ -4,40 +4,47 @@ require_once 'Usuario.php';
 
 class ApiController
 {
-    private $usuario;
     private $rota;
+    private $dados;
+    private $usuario;
 
-    public function __construct($rota, $usuario)
+    public function __construct($rota, $dados, $usuario)
     {
         $this->rota = $rota;
+        $this->dados = $dados;
         $this->usuario = $usuario;
     }
 
     public function executa() {
         if ($this->rota === '/login') {
-            // TODO: implementar função de logar
+            $dados = $this->usuario->logar($this->dados['login'], $this->dados['senha']);
+
+            if (in_array($dados['id'], $this->usuario->usuariosLogados)) {
+                return ['mensagem' => 'Usuário está logado'];
+            } else {
+                return ['mensagem' => 'Usuário não está logado'];
+            }
         } else if ($this->rota === '/cadastrar') {
-            // TODO: implementar função de cadastrar
+            $dados = $this->usuario->cadastrar($this->dados['login'], $this->dados['senha']);
+
+            if (in_array($dados['id'], $this->usuario->usuariosLogados)) {
+                return ['mensagem' => 'Usuário cadastrado e logado'];
+            } else {
+                return ['mensagem' => 'Usuário não cadastrado'];
+            }
         } else if ($this->rota === '/logout') {
-            // TODO: implementar função de logout
-        } else if ($this->rota === '/alterar-dados') {
-            // TODO: implementar função de alterar dados
-        } else if ($this->rota === '/eh-administrador') {
-            // TODO: implementar função de verificar se é administrador
-        } else if ($this->rota === '/eh-moderador') {
-            // TODO: implementar função de verificar se é moderador
-        } else if ($this->rota === '/adicionar-a-lista') {
-            // TODO: implementar função de adicionar a lista
-        } else if ($this->rota === '/remover-da-lista') {
-            // TODO: implementar função de remover da lista
-        } else if ($this->rota === '/adicionar-nota') {
-            // TODO: implementar função de adicionar nota
-        } else {
-            throw new Exception('Rota não encontrada');
+            $this->usuario->logout($this->dados['usuarioId']);
+
+            if (in_array($this->dados['usuarioId'], $this->usuario->usuariosLogados) === false) {
+                return ['mensagem' => 'Usuário deslogado'];
+            } else {
+                return ['mensagem' => 'Usuário não deslogado'];
+            }
         }
     }
 }
 
 $rota = $_SERVER['REQUEST_URI'];
 $usuario = new Usuario();
-$api = new ApiController($rota, $usuario);
+$dados = $_GET;
+$api = new ApiController($rota, $dados, $usuario);
